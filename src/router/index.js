@@ -12,7 +12,7 @@ export default [{
   component: Container,
   children: [{
       path: 'dashboard',
-      name: '首页',
+      name: '系统首页',
       component: Dashboard,
       children: [{
           path: 'dashboard1',
@@ -39,7 +39,38 @@ export default [{
     },
     {
       path: 'article',
-      name: '文章',
+      name: '内容管理',
+      component: Article,
+      children: [{
+          path: 'article11',
+          name: '内容列表',
+          component: Dashboard,
+        },
+        {
+          path: 'article111',
+          name: '增加内容',
+          component: Dashboard,
+        }
+      ]
+    },
+    {
+      path: 'article1',
+      name: '文章1',
+      component: Article,
+    },
+    {
+      path: 'article2',
+      name: '文章2',
+      component: Article,
+    },
+    {
+      path: 'article3',
+      name: '文章3',
+      component: Article,
+    },
+    {
+      path: 'setting',
+      name: '系统设置',
       component: Article,
     },
   ]

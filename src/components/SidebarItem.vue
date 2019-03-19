@@ -24,7 +24,10 @@
     style="font-weight: 400"
     v-else-if="!subroute.hidden"
     :index="genPath(fatherpath, subroute.path)"
-  >{{subroute.name}}</el-menu-item>
+  >
+    <i class="el-icon-menu"></i>
+    <span slot="title">{{subroute.name}}</span>
+  </el-menu-item>
 
   <el-menu-item
     style="font-weight: 400"
@@ -67,7 +70,7 @@ export default {
     }
   },
   mounted() {
-    console.log("sidebar routes: ", this.routes);
+    // console.log("sidebar routes: ", this.routes);
   }
 };
 </script>

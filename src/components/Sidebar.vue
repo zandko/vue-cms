@@ -2,7 +2,7 @@
   <div>
     <!-- 后台logo -->
     <div class="app-side-logo">
-      <img src="@/assets/logo.png" :width="collapse ? '60' : '60'" height="60">
+      <img src="@/assets/wallhaven-751323.jpg" :width="collapse ? '60' : '230'" height="60">
     </div>
     <!-- 左侧菜单开始 -->
     <el-menu

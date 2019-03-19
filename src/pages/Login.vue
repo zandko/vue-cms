@@ -23,9 +23,9 @@
           <template slot="prepend">
             <span class="fa fa-lock fa-lg" style="width: 13px"></span>
           </template>
-          <template slot="suffix">
+          <!-- <template slot="suffix">
             <span class="password-eye" @click="showPassword" :class="eyeType"></span>
-          </template>
+          </template>-->
         </el-input>
       </el-form-item>
       <el-checkbox v-model="checked" class="rememberme">记住密码</el-checkbox>
@@ -62,22 +62,23 @@ export default {
           { required: true, message: "enter your password", trigger: "blur" }
         ]
       },
-      checked: false,
-      pwdType: "password",
-      eyeType: "fa fa-eye-slash fa-lg"
+      checked: false
+      // pwdType: "password",
+      // eyeType: "fa fa-eye-slash fa-lg"
     };
   },
   methods: {
     // 显示密码
-    showPassword() {
-      if (this.pwdType === "password") {
-        this.pwdType = "";
-        this.eyeType = "fa fa-eye fa-lg";
-      } else {
-        this.pwdType = "password";
-        this.eyeType = "fa fa-eye-slash fa-lg";
-      }
-    },
+    // showPassword() {
+    //   if (this.pwdType === "password") {
+    //     this.pwdType = "";
+    //     this.eyeType = "fa fa-eye fa-lg";
+    //   } else {
+    //     this.pwdType = "password";
+    //     this.eyeType = "fa fa-eye-slash fa-lg";
+    //   }
+    // },
+
     // 登录
     handleSubmit() {
       this.$refs.ruleForm2.validate(valid => {
@@ -88,7 +89,12 @@ export default {
             this.ruleForm2.password === "123456"
           ) {
             this.logining = false;
-            setStore("user", this.ruleForm2.username);
+            // 如果选择记住密码就保存到localStorage 不选择就保存到sessionStorage
+            if (this.checked) {
+              setStore("user", this.ruleForm2.username);
+            } else {
+              sessionStorage.setItem("user", this.ruleForm2.username);
+            }
             this.$router.push({ path: "/" });
           } else {
             this.logining = false;
@@ -97,7 +103,7 @@ export default {
             });
           }
         } else {
-          console.log("error submit");
+          // console.log("error submit");
           return false;
         }
       });

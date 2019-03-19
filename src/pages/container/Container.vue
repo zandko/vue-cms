@@ -5,7 +5,7 @@
       <el-aside
         class="app-side app-side-left"
         :class="isCollapse ? 'app-side-collapsed' : 'app-side-expanded'"
-      > 
+      >
         <!-- 菜单栏 -->
         <Sidebar :collapse="isCollapse" :routes="$router.options.routes[1].children"/>
       </el-aside>
@@ -49,6 +49,7 @@
         <!--内容区域开始-->
         <el-main class="app-body">
           <template>
+            <Breadcrumb/>
             <router-view/>
           </template>
         </el-main>
@@ -61,6 +62,7 @@
 <script>
 import { getStore, removeStore } from "../../../src/config/mUtils";
 import Sidebar from "../../components/Sidebar";
+import Breadcrumb from '../../components/Breadcrumb';
 export default {
   name: "Container",
   data() {
@@ -88,13 +90,15 @@ export default {
     }
   },
   mounted: function() {
-    let user = getStore("user");
+    let user = getStore("user")
+      ? getStore("user")
+      : sessionStorage.getItem("user");
     if (user) {
       this.username = user;
     }
   },
   components: {
-    Sidebar
+    Sidebar,Breadcrumb
   }
 };
 </script>
