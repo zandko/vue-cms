@@ -74,12 +74,16 @@ import routes from './router'
 import store from './store';
 import '@/styles/index.scss';
 import 'font-awesome/scss/font-awesome.scss'; // 字体图标
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 import {
   getStore,
   removeStore
 } from './config/mUtils';
 
 Vue.config.productionTip = false;
+// 文本编辑器
+Vue.use(mavonEditor);
 // 配置路由
 Vue.use(VueRouter);
 const router = new VueRouter({

@@ -5,7 +5,7 @@
   >
     <!-- 创建菜单分组 -->
     <template slot="title">
-      <i class="el-icon-menu"></i>
+      <i :class="subroute.icon" v-if="subroute.icon"></i>
       <span slot="title">{{subroute.name}}</span>
     </template>
 
@@ -25,7 +25,7 @@
     v-else-if="!subroute.hidden"
     :index="genPath(fatherpath, subroute.path)"
   >
-    <i class="el-icon-menu"></i>
+    <i :class="subroute.icon" v-if="subroute.icon"></i>
     <span slot="title">{{subroute.name}}</span>
   </el-menu-item>
 
