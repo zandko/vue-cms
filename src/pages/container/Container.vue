@@ -6,7 +6,8 @@
         class="app-side app-side-left"
         :class="isCollapse ? 'app-side-collapsed' : 'app-side-expanded'"
       > 
-        
+        <!-- 菜单栏 -->
+        <Sidebar :collapse="isCollapse" :routes="$router.options.routes[1].children"/>
       </el-aside>
       <!--左侧导航结束-->
       <el-container>
@@ -59,7 +60,7 @@
 
 <script>
 import { getStore, removeStore } from "../../../src/config/mUtils";
-
+import Sidebar from "../../components/Sidebar";
 export default {
   name: "Container",
   data() {
@@ -82,12 +83,6 @@ export default {
         })
         .catch(() => {});
     },
-    handleOpen(key, keyPath) {
-      // console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      // console.log(key, keyPath);
-    },
     handleSelect(key, keyPath) {
       // console.log(key, keyPath);
     }
@@ -97,6 +92,9 @@ export default {
     if (user) {
       this.username = user;
     }
+  },
+  components: {
+    Sidebar
   }
 };
 </script>

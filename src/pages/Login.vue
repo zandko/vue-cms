@@ -68,6 +68,7 @@ export default {
     };
   },
   methods: {
+    // 显示密码
     showPassword() {
       if (this.pwdType === "password") {
         this.pwdType = "";
@@ -77,6 +78,7 @@ export default {
         this.eyeType = "fa fa-eye-slash fa-lg";
       }
     },
+    // 登录
     handleSubmit() {
       this.$refs.ruleForm2.validate(valid => {
         if (valid) {

@@ -2,7 +2,7 @@
   <div>
     <!-- 后台logo -->
     <div class="app-side-logo">
-      <img src="@/assets/logo.png" :width="isCollapse ? '60' : '60'" height="60">
+      <img src="@/assets/logo.png" :width="collapse ? '60' : '60'" height="60">
     </div>
     <!-- 左侧菜单开始 -->
     <el-menu
@@ -10,24 +10,52 @@
       router
       class="el-menu-vertical-demo"
       @open="handleOpen"
-      :collapse="isCollapse"
+      :collapse="collapse"
     >
-      <!-- <template v-for="route in $router.options.routes">
-        <template v-for="item in route.children">
-          <el-menu-item :key="route.path + '/' + item.path" :index="item.path">
-            <i class="el-icon-menu"></i>
-            <span slot="title">{{ item.name }}</span>
-          </el-menu-item>
-        </template>
-      </template> -->
+      <SidebarItem
+        v-for="(item, index) in routes"
+        :key="index"
+        :subroute="item"
+        :fatherpath="fatherPath"
+        :barIdx="index"
+      />
     </el-menu>
     <!-- 左侧结束结束 -->
   </div>
 </template>
 
 <script>
+import SidebarItem from "./SidebarItem";
 export default {
-    
-}
+  name: "Sidebar",
+  components: {
+    SidebarItem
+  },
+  props: {
+    collapse: {
+      type: Boolean
+    },
+    routes: {
+      type: Array
+    }
+  },
+  computed: {
+    // 默认激活的路由, 用来激活菜单选中状态
+    defaultActive() {
+      return this.$route.path;
+    },
+    fatherPath() {
+      return this.$router.options.routes[1].path;
+    }
+  },
+  methods: {
+    handleOpen(key, keyPath) {
+      //   console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      //   console.log(key, keyPath);
+    }
+  }
+};
 </script>
 
