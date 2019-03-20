@@ -4,6 +4,9 @@ const Dashboard = r => require.ensure([], () => r(require('../pages/dashboard/In
 const Article = r => require.ensure([], () => r(require('../pages/article/Index')), 'Article');
 const ArticleList = r => require.ensure([], () => r(require('../pages/article/list/List.vue')), 'ArticleList');
 const ArticleAdd = r => require.ensure([], () => r(require('../pages/article/add/Add.vue')), 'ArticleAdd');
+const Users = r => require.ensure([], () => r(require('../pages/users/Index')), 'Users');
+const UsersList = r => require.ensure([], () => r(require('../pages/users/list/List.vue')), 'UsersList');
+const UsersAdd = r => require.ensure([], () => r(require('../pages/users/add/Add.vue')), 'UsersAdd');
 
 export default [{
   path: '/login',
@@ -31,7 +34,25 @@ export default [{
         {
           path: 'add',
           name: '增加内容',
+          icon: 'el-icon-edit',
           component: ArticleAdd,
+        }
+      ]
+    },
+    {
+      path: 'users',
+      name: '用户管理',
+      icon: 'el-icon-news',
+      component: Users,
+      children: [{
+          path: '',
+          name: '用户列表',
+          component: UsersList,
+        },
+        {
+          path: 'add',
+          name: '添加用户',
+          component: UsersAdd,
         }
       ]
     }
