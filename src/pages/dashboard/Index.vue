@@ -1,10 +1,14 @@
 <template>
-  <h1>dashboard</h1>
+  <Echarts/>
 </template>
 
 <script>
+import Echarts from '../../components/Echarts';
   export default {
-    name: "index"
+    name: "index",
+    components: {
+      Echarts
+    }
   }
 </script>
 
