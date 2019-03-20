@@ -1,7 +1,26 @@
 <template>
   <el-breadcrumb separator="/">
-    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-    <el-breadcrumb-item>内容管理</el-breadcrumb-item>
-    <el-breadcrumb-item>内容列表</el-breadcrumb-item>
+    <el-breadcrumb-item v-for="item in router" :key="item.name">{{item.name}}</el-breadcrumb-item>
   </el-breadcrumb>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      router: []
+    };
+  },
+  watch: {
+    $route(to, from) {
+      this.$route.matched[0].name = "首页";
+      this.router = this.$route.matched;
+      console.log(this.$route);
+    }
+  },
+  mounted() {
+    this.$route.matched[0].name = "首页";
+    this.router = this.$route.matched;
+  }
+};
+</script>

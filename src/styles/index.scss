@@ -30,7 +30,7 @@ body {
   flex-flow: row nowrap;
 
   &-side {
-    width: 230px;
+    width: 231px;
     height: 100%;
     font-weight: 700;
     border-right: $solidBorder;
@@ -49,7 +49,7 @@ body {
     }
 
     &-expanded {
-      width: 230px !important;
+      width: 231px !important;
     }
   }
 
