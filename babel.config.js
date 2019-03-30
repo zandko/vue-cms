@@ -10,13 +10,5 @@ module.exports = {
         "styleLibraryName": "theme-chalk"
       }
     ]
-  ],
-  transpileDependencies: [
-    module.exports = {
-      transpileDependencies: [
-        'vue-echarts',
-        'resize-detector'
-      ]
-    }
   ]
 }

@@ -7,17 +7,9 @@ import routes from './router'
 import store from './store';
 import '@/styles/index.scss';
 import 'font-awesome/scss/font-awesome.scss'; // 字体图标
-import mavonEditor from 'mavon-editor' // 文本编辑器
-import 'mavon-editor/dist/css/index.css';
-
-import {
-  getStore,
-  removeStore
-} from './config/mUtils';
 
 Vue.config.productionTip = false;
-// 文本编辑器
-Vue.use(mavonEditor);
+
 // 配置路由
 Vue.use(VueRouter);
 const router = new VueRouter({
@@ -31,9 +23,9 @@ const router = new VueRouter({
 // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
 router.beforeEach((to, from, next) => {
   if (to.path === '/login') {
-    removeStore('user');
+    sessionStorage.removeItem("user");
   }
-  let user = getStore('user');
+  let user = sessionStorage.getItem("user");
   if (!user && to.path !== '/login') {
     next({
       path: '/login'

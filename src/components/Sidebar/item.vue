@@ -5,8 +5,8 @@
   >
     <!-- 创建菜单分组 -->
     <template slot="title">
-      <i :class="subroute.icon" v-if="subroute.icon"></i>
-      <span slot="title">{{subroute.name}}</span>
+      <i :class="subroute.meta.icon" v-if="subroute.meta.icon"></i>
+      <span slot="title">{{subroute.meta.title}}</span>
     </template>
 
     <!-- 递归调用自身，直到 subroute 不含子节点 -->
@@ -25,8 +25,8 @@
     v-else-if="!subroute.hidden"
     :index="genPath(fatherpath, subroute.path)"
   >
-    <i :class="subroute.icon" v-if="subroute.icon"></i>
-    <span slot="title">{{subroute.name}}</span>
+    <i :class="subroute.meta.icon" v-if="subroute.meta.icon"></i>
+    <span slot="title">{{subroute.meta.title}}</span>
   </el-menu-item>
 
   <el-menu-item
@@ -77,4 +77,3 @@ export default {
 
 <style>
 </style>
-

@@ -2,7 +2,7 @@
   <div>
     <!-- 后台logo -->
     <div class="app-side-logo">
-      <img src="@/assets/wallhaven-751323.jpg" :width="collapse ? '60' : '230'" height="60">
+      <img src="@/assets/logo.png" :width="collapse ? '60' : '230'" height="60">
     </div>
     <!-- 左侧菜单开始 -->
     <el-menu
@@ -25,9 +25,8 @@
 </template>
 
 <script>
-import SidebarItem from "./SidebarItem";
+import SidebarItem from "./item";
 export default {
-  name: "Sidebar",
   components: {
     SidebarItem
   },
@@ -49,11 +48,11 @@ export default {
     }
   },
   methods: {
-    handleOpen(key, keyPath) {
-      //   console.log(key, keyPath);
+    handleOpen() {
+        // console.log(key, keyPath);
     },
-    handleClose(key, keyPath) {
-      //   console.log(key, keyPath);
+    handleClose() {
+        // console.log(key, keyPath);
     }
   }
 };

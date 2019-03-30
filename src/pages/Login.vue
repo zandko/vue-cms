@@ -38,8 +38,6 @@
 </template>
 
 <script>
-import { setStore } from "../../src/config/mUtils";
-
 export default {
   name: "Login",
   data() {
@@ -89,16 +87,14 @@ export default {
             this.ruleForm2.password === "123456"
           ) {
             this.logining = false;
-            // 如果选择记住密码就保存到localStorage 不选择就保存到sessionStorage
+            // 如果选择记住密码就保存到sessionStorage
             if (this.checked) {
-              setStore("user", this.ruleForm2.username);
-            } else {
               sessionStorage.setItem("user", this.ruleForm2.username);
             }
             this.$router.push({ path: "/" });
           } else {
             this.logining = false;
-            this.$alert("username or password wrong!", "info", {
+            this.$alert("用户名或者密码错误!", "警告", {
               confirmButtonText: "ok"
             });
           }

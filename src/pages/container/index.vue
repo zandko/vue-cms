@@ -17,18 +17,8 @@
             <i v-show="!isCollapse" class="el-icon-d-arrow-left"></i>
             <i v-show="isCollapse" class="el-icon-d-arrow-right"></i>
           </div>
-          <!-- 头部菜单开始 -->
-          <el-menu
-            default-active="/"
-            router
-            class="el-menu-demo tab-page"
-            mode="horizontal"
-            @select="handleSelect"
-            active-text-color="#409EFF"
-          >
-            <el-menu-item index="/">首页</el-menu-item>
-          </el-menu>
-          <!--头部菜单结束-->
+          <!-- 面包屑 -->
+          <Breadcrumb/>
           <!--用户菜单开始-->
           <div class="app-header-userinfo">
             <el-dropdown trigger="hover" :hide-on-click="false">
@@ -49,7 +39,7 @@
         <!--内容区域开始-->
         <el-main class="app-body">
           <template>
-            <Breadcrumb/>
+            <!--            <Tags />-->
             <router-view/>
           </template>
         </el-main>
@@ -60,11 +50,11 @@
 </template>
 
 <script>
-import { getStore, removeStore } from "../../../src/config/mUtils";
-import Sidebar from "../../components/Sidebar";
-import Breadcrumb from '../../components/Breadcrumb';
+import Sidebar from "@/components/Sidebar";
+import Breadcrumb from "@/components/Breadcrumb";
+import Tags from "@/components/Tags";
+
 export default {
-  name: "Container",
   data() {
     return {
       username: "",
@@ -80,7 +70,7 @@ export default {
     logout: function() {
       this.$confirm("确认退出?", "提示", {})
         .then(() => {
-          removeStore("user");
+          sessionStorage.removeItem("user");
           this.$router.push("/login");
         })
         .catch(() => {});
@@ -90,15 +80,15 @@ export default {
     }
   },
   mounted: function() {
-    let user = getStore("user")
-      ? getStore("user")
-      : sessionStorage.getItem("user");
+    let user = sessionStorage.getItem("user");
     if (user) {
       this.username = user;
     }
   },
   components: {
-    Sidebar,Breadcrumb
+    Sidebar,
+    Breadcrumb,
+    Tags
   }
 };
 </script>
