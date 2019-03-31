@@ -22,6 +22,7 @@
           <!--用户菜单开始-->
           <div class="app-header-userinfo">
             <el-dropdown trigger="hover" :hide-on-click="false">
+              <img width="40" style="display: inline-block; vertical-align: middle;border-radius: 50%" src="../../assets/logo.png" alt="">
               <span class="el-dropdown-link">
                 {{ username }}
                 <i class="el-icon-arrow-down el-icon--right"></i>
@@ -52,7 +53,7 @@
 <script>
 import Sidebar from "@/components/Sidebar";
 import Breadcrumb from "@/components/Breadcrumb";
-import Tags from "@/components/Tags";
+// import Tags from "@/components/Tags";
 
 export default {
   data() {
@@ -75,9 +76,9 @@ export default {
         })
         .catch(() => {});
     },
-    handleSelect(key, keyPath) {
+    // handleSelect(key, keyPath) {
       // console.log(key, keyPath);
-    }
+    // }
   },
   mounted: function() {
     let user = sessionStorage.getItem("user");
@@ -88,7 +89,7 @@ export default {
   components: {
     Sidebar,
     Breadcrumb,
-    Tags
+    // Tags
   }
 };
 </script>

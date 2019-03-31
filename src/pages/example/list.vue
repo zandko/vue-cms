@@ -69,18 +69,27 @@
       :limit.sync="listQuery.limit"
       @pagination="getList"
     />
+
+    <el-dialog
+            title="提示"
+            :visible.sync="dialogVisible"
+            width="70%"
+            :before-close="handleClose">
+      <Edit />
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import Pagination from "@/components/Pagination";
-
+import Edit from "./edit.vue";
 export default {
   components: {
-    Pagination
+    Pagination, Edit
   },
   data() {
     return {
+      dialogVisible: false,
       input: "",
       list: [
         {
@@ -194,13 +203,23 @@ export default {
     handleCurrentChange(val) {
       this.currentRow = val;
     },
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+        .then(_ => {
+          done();
+        })
+        .catch(_ => {});
+    },
     handleEdit(index, row) {
+      // this.$router.push('/example/create');
       // console.log(index, row);
+      this.dialogVisible = true;
     },
-    handleDelete(index, row) {
+    // handleDelete(index, row) {
       // console.log(index, row);
-    },
-    getList() {}
+    // },
+    getList() {
+    }
   }
 };
 </script>
